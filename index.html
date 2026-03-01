@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dreamy Hair Beauty Salon — Chicago, IL</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f5f0e8;
+      --cream-dark: #ede5d4;
+      --charcoal: #1a1a1a;
+      --gold: #c9a84c;
+      --gold-light: #e2c97e;
+      --warm-gray: #6b6560;
+      --white: #fefefe;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+    }
+
+    /* DEMO BANNER */
+    .demo-banner {
+      background: var(--charcoal);
+      color: var(--gold-light);
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      position: relative;
+      z-index: 1000;
+    }
+    .demo-banner a { color: var(--gold-light); text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(245,240,232,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--charcoal);
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--warm-gray);
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .btn-nav {
+      background: var(--charcoal);
+      color: var(--cream) !important;
+      padding: 10px 22px;
+      border-radius: 2px;
+      font-weight: 500;
+      transition: background 0.3s !important;
+    }
+    .btn-nav:hover { background: var(--gold) !important; color: var(--charcoal) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 6% 80px 8%;
+      background: var(--cream);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--charcoal);
+      margin-bottom: 12px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--warm-gray);
+      line-height: 1.7;
+      max-width: 420px;
+      margin-bottom: 40px;
+      font-weight: 300;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-top: 4px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--charcoal);
+      color: var(--cream);
+      padding: 15px 36px;
+      border: none;
+      border-radius: 2px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold); color: var(--charcoal); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--charcoal);
+      padding: 15px 36px;
+      border: 1px solid rgba(26,26,26,0.3);
+      border-radius: 2px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .hero-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(245,240,232,0.15) 0%, transparent 40%);
+    }
+
+    /* SECTION SHARED */
+    section { padding: 100px 8%; }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--warm-gray);
+      max-width: 520px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* SERVICES */
+    #services { background: var(--white); }
+
+    .services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--cream-dark);
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 48px 36px;
+      transition: all 0.3s;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.4s;
+    }
+    .service-card:hover::before { width: 100%; }
+    .service-card:hover { background: var(--cream); }
+
+    .service-icon {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .service-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--charcoal);
+    }
+    .service-desc {
+      font-size: 0.88rem;
+      color: var(--warm-gray);
+      line-height: 1.65;
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+    .service-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* GALLERY */
+    #gallery { background: var(--charcoal); padding: 100px 0; }
+
+    .gallery-header {
+      padding: 0 8%;
+      margin-bottom: 56px;
+    }
+    .gallery-header .section-title { color: var(--cream); }
+    .gallery-header .section-eyebrow { color: var(--gold-light); }
+    .gallery-header .section-sub { color: rgba(245,240,232,0.6); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 300px 300px;
+      gap: 3px;
+    }
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .gallery-item:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,26,26,0.5) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .gallery-item:hover::after { opacity: 1; }
+
+    /* REVIEWS */
+    #reviews { background: var(--cream-dark); }
+
+    .reviews-header { text-align: center; margin-bottom: 64px; }
+    .reviews-header .section-sub { margin: 0 auto; }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .review-card {
+      background: var(--white);
+      padding: 40px 36px;
+      border-radius: 2px;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .review-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(26,26,26,0.08);
+    }
+
+    .review-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      color: var(--gold);
+      line-height: 0.7;
+      margin-bottom: 16px;
+      font-weight: 300;
+    }
+    .review-text {
+      font-size: 0.92rem;
+      color: var(--charcoal);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .review-stars {
+      color: var(--gold);
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+    .review-author {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--warm-gray);
+    }
+
+    /* CONTACT */
+    #contact { background: var(--white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 28px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--cream);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      color: var(--gold);
+    }
+    .contact-text {
+      font-size: 0.9rem;
+      color: var(--warm-gray);
+      line-height: 1.5;
+    }
+    .contact-text strong { color: var(--charcoal); display: block; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2px; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+    .form-group label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      border: 1px solid rgba(107,101,96,0.2);
+      border-radius: 2px;
+      padding: 12px 16px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      background: var(--cream);
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      background: var(--white);
+    }
+    .form-group textarea { resize: none; min-height: 120px; }
+
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 2px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      transition: opacity 0.3s;
+      margin-top: 8px;
+      width: fit-content;
+    }
+    .whatsapp-btn:hover { opacity: 0.85; }
+
+    /* FOOTER */
+    footer {
+      background: var(--charcoal);
+      color: var(--cream);
+      padding: 60px 8% 30px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 48px;
+    }
+    .footer-brand h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 300;
+      margin-bottom: 12px;
+      color: var(--cream);
+    }
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: rgba(245,240,232,0.5);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+    .footer-col h5 {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li {
+      font-size: 0.85rem;
+      color: rgba(245,240,232,0.6);
+      margin-bottom: 10px;
+      font-weight: 300;
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(245,240,232,0.1);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-bottom p { font-size: 0.78rem; color: rgba(245,240,232,0.35); }
+
+    /* ANIMATIONS */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-image { height: 50vw; }
+      .hero-content { padding: 60px 6%; }
+      .services-header { grid-template-columns: 1fr; gap: 20px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gallery-item:first-child { grid-column: span 2; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- DEMO BANNER -->
+  <div class="demo-banner">
+    ✦ Demo Preview — Designed by [Your Name] · <a href="https://wa.me/529...">WhatsApp</a> · No commitment, no cost
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Dreamy <span>Hair</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="btn-nav">Book Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content fade-up">
+      <p class="hero-eyebrow">✦ Little Village, Chicago · Est. in the Heart of the Community</p>
+      <h1 class="hero-title">Where Beauty<br>Meets <em>Artistry</em></h1>
+      <p class="hero-subtitle">From breathtaking bridal updos to flawless quinceañera looks — Dreamy Hair transforms your most important moments into unforgettable memories.</p>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">4.8★</div>
+          <div class="stat-label">Google Rating</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">88+</div>
+          <div class="stat-label">Reviews</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Years of Excellence</div>
+        </div>
+      </div>
+
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Book Your Appointment</a>
+        <a href="#gallery" class="btn-secondary">View Gallery</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=85" alt="Bridal hair styling" loading="eager" />
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-header">
+      <div class="fade-up">
+        <p class="section-eyebrow">✦ Our Expertise</p>
+        <h2 class="section-title">Services Crafted<br>for Your Story</h2>
+      </div>
+      <div class="fade-up">
+        <p class="section-sub">Each service is a personalized experience. We specialize in weddings, quinceañeras, and photo sessions — because you deserve artistry, not just a haircut.</p>
+      </div>
+    </div>
+
+    <div class="services-grid fade-up">
+      <div class="service-card">
+        <span class="service-icon">💍</span>
+        <h3 class="service-name">Bridal Hair</h3>
+        <p class="service-desc">Elegant updos, braids, and styles designed for your perfect wedding day. Includes trial session and day-of touch-ups.</p>
+        <div class="service-price">From $150</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">👑</span>
+        <h3 class="service-name">Quinceañera Packages</h3>
+        <p class="service-desc">Complete styling for the quinceañera and her court. Group bookings welcome. Full glam or classic elegance.</p>
+        <div class="service-price">From $120 / person</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">📸</span>
+        <h3 class="service-name">Photo Sessions</h3>
+        <p class="service-desc">Camera-ready styling for portraits, model shoots, and family sessions. Hair and makeup coordination available.</p>
+        <div class="service-price">From $85</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">✨</span>
+        <h3 class="service-name">Balayage & Color</h3>
+        <p class="service-desc">Sun-kissed balayage, vivid color, and glossy treatments. Custom blends that complement your skin tone.</p>
+        <div class="service-price">From $180</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">💆</span>
+        <h3 class="service-name">Keratin Treatment</h3>
+        <p class="service-desc">Frizz-free, silky smooth results that last 3–4 months. Perfect for Chicago's unpredictable weather.</p>
+        <div class="service-price">From $220</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">💇</span>
+        <h3 class="service-name">Cut & Style</h3>
+        <p class="service-desc">Precision cuts, blowouts, and styling for everyday elegance. Walk in feeling good. Walk out feeling extraordinary.</p>
+        <div class="service-price">From $55</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="gallery-header fade-up">
+      <p class="section-eyebrow">✦ Portfolio</p>
+      <h2 class="section-title" style="color: var(--cream);">Our Work<br>Speaks for Itself</h2>
+      <p class="section-sub" style="color: rgba(245,240,232,0.55); margin-top: 12px;">Every style is a collaboration. Every client, a canvas.</p>
+    </div>
+
+    <div class="gallery-grid fade-up">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80" alt="Bridal updo" />
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80" alt="Balayage color" />
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80" alt="Hair styling" />
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&q=80" alt="Makeup and hair" />
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=800&q=80" alt="Salon interior" />
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="reviews-header fade-up">
+      <p class="section-eyebrow">✦ Google Reviews</p>
+      <h2 class="section-title">What Our Clients Say</h2>
+      <p class="section-sub">Rated 4.8 stars by 88 clients on Google. Here are some of their stories.</p>
+    </div>
+
+    <div class="reviews-grid fade-up">
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <p class="review-text">I got my hair done here for my wedding and it was absolutely perfect. The stylist understood exactly what I wanted and the updo stayed in place all night. I cried happy tears when I saw myself in the mirror!</p>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-author">— Maria G. · Bride, 2024</div>
+      </div>
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <p class="review-text">They did the hair for my daughter's quinceañera and her entire court. Everyone looked stunning. The team was professional, punctual, and so warm. We will definitely be back for my niece's quinceañera next year.</p>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-author">— Rosa M. · Quinceañera mom</div>
+      </div>
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <p class="review-text">Best balayage I've ever had in Chicago. I've been to three other salons and nothing compares. She matched the color to my skin perfectly and gave me exactly the vibe I was going for. 10/10 recommend.</p>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-author">— Vanessa L. · Regular client</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-grid">
+      <div class="fade-up">
+        <p class="section-eyebrow">✦ Let's Connect</p>
+        <h2 class="section-title">Book Your<br>Appointment</h2>
+        <p class="section-sub" style="margin-bottom: 40px;">Ready to look and feel extraordinary? Reach out below or message us on WhatsApp — we respond within the hour.</p>
+
+        <h3>Find Us</h3>
+        <div class="contact-item" style="margin-top: 20px;">
+          <div class="contact-icon">📍</div>
+          <div class="contact-text">
+            <strong>Address</strong>
+            Little Village, 26th Street<br>Chicago, IL
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-text">
+            <strong>Phone</strong>
+            (773) 557-3993
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div class="contact-text">
+            <strong>Hours</strong>
+            Mon–Sat: 9:00 AM – 7:00 PM<br>Sunday: By appointment only
+          </div>
+        </div>
+
+        <a href="https://wa.me/17735573993" class="whatsapp-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Message on WhatsApp
+        </a>
+      </div>
+
+      <div class="fade-up">
+        <div class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="Sofia" />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Martinez" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="sofia@email.com" />
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="(312) 000-0000" />
+          </div>
+          <div class="form-group">
+            <label>Service</label>
+            <select>
+              <option value="">Select a service...</option>
+              <option>Bridal Hair</option>
+              <option>Quinceañera Package</option>
+              <option>Photo Session Styling</option>
+              <option>Balayage & Color</option>
+              <option>Keratin Treatment</option>
+              <option>Cut & Style</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Preferred Date & Time</label>
+            <input type="text" placeholder="e.g. Saturday June 14, afternoon" />
+          </div>
+          <div class="form-group">
+            <label>Notes (optional)</label>
+            <textarea placeholder="Tell us about your vision, special occasion, or any questions..."></textarea>
+          </div>
+          <button type="button" class="btn-primary" style="border: none; cursor: pointer; font-size: 0.82rem;">
+            Request Appointment →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4>Dreamy Hair<br>Beauty Salon</h4>
+        <p>Serving the Little Village community and all of Chicago with love, artistry, and expertise. Weddings, quinceañeras, and everyday beauty — we do it all.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li>Bridal Hair</li>
+          <li>Quinceañera Packages</li>
+          <li>Balayage & Color</li>
+          <li>Keratin Treatments</li>
+          <li>Cut & Style</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>26th St, Little Village</li>
+          <li>Chicago, IL</li>
+          <li>(773) 557-3993</li>
+          <li>Mon–Sat: 9am–7pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Dreamy Hair Beauty Salon · Little Village, Chicago, IL</p>
+      <p style="color: rgba(245,240,232,0.2);">Demo designed by [Your Name]</p>
+    </div>
+  </footer>
+
+  <script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Trigger hero immediately
+    document.querySelectorAll('.hero .fade-up').forEach(el => {
+      setTimeout(() => el.classList.add('visible'), 100);
+    });
+  </script>
+</body>
+</html>
